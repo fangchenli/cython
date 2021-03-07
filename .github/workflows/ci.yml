@@ -10,7 +10,7 @@ on:
 
 jobs:
   CI:
-    name: (${{ matrix.python-version }}, ${{ matrix.os }})
+    name: (${{ matrix.os }}, ${{ matrix.python-version }}, ${{ matrix.backend }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -36,8 +36,7 @@ jobs:
       shell: bash -l {0}
       run: |
         conda install -c conda-forge numpy=1.18.* pythran
-        pip install --upgrade pip setuptools wheel
-        pip install -r test-requirements-cpython.txt
+        conda install -r test-requirements-cpython.txt
 
     - name: Build Cython
       shell: bash -l {0}
