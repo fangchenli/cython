@@ -33,7 +33,7 @@ jobs:
 
     - name: Install Test Requirements
       shell: bash -l {0}
-      run: pip install -f test-requirements.txt test-requirements-cpython.txt
+      run: conda install -f test-requirements.txt test-requirements-cpython.txt
 
     - name: Build Cython
       shell: bash -l {0}
