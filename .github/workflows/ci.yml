@@ -16,7 +16,8 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "macos-latest"]
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: [3.6, 3.7, 3.8]
+        backend: [c, cpp]
 
     steps:
     - name: Checkout
@@ -34,7 +35,7 @@ jobs:
     - name: Install Test Requirements
       shell: bash -l {0}
       run: |
-        conda install numpy=1.18.* coverage
+        conda install -c conda-forge numpy=1.18.* pythran
         pip install --upgrade pip setuptools wheel
         pip install -r test-requirements-cpython.txt
 
@@ -46,6 +47,6 @@ jobs:
 
     - name: Run Test
       shell: bash -l {0}
-      run: python runtests.py -vv --no-code-style --backends=c
+      run: python runtests.py -vv --no-code-style --backends=${{ matrix.backend }}
       env:
         CFLAGS: "-O0 -ggdb -Wall -Wextra"
