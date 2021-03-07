@@ -35,8 +35,8 @@ jobs:
     - name: Install Test Requirements
       shell: bash -l {0}
       run: |
-        conda install -c conda-forge numpy=1.18.* pythran
-        conda install -f test-requirements-cpython.txt
+        conda install -c conda-forge pythran
+        conda install jupyter line_profiler pyzmq pyrsistent qtconsole numpy=1.18.*
 
     - name: Build Cython
       shell: bash -l {0}
