@@ -34,7 +34,7 @@ jobs:
     - name: Install Test Requirements
       shell: bash -l {0}
       run: |
-        conda install numpy=1.18.* coverage pycodestyle
+        conda install numpy=1.18.* coverage
         pip install --upgrade pip setuptools wheel
         pip install -r test-requirements-cpython.txt
 
